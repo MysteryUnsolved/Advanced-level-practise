@@ -1,0 +1,89 @@
+# Declare ADT(record)
+class StuRec:
+    def __init__(self):
+        self.id = -1
+        self.name = ""
+        self.fee = -1
+
+
+# Global space
+Null_Pointer = -1
+stack = [StuRec() for i in range(6)]
+head = Null_Pointer
+
+
+# Initialise Stack
+def init():
+    global head, stack
+    for i in range(6):
+        stack[i].id = -1
+        stack[i].name = ""
+        stack[i].fee = -1
+    head = -1
+
+
+# Push
+def push():
+    global head, stack
+    if head == len(stack) - 1:
+        print("Stack is full")
+    else:
+        head += 1
+        stack[head].id = input("Enter Student ID: ")
+        stack[head].name = input("Enter Student Name: ")
+        stack[head].fee = input("Enter Student Fees: ")
+
+
+# Pop
+def pop():
+    global head, stack
+    data = StuRec()
+    if head == Null_Pointer:
+        print("Stack Underflow")
+        data.id = -1
+    else:
+        data = StuRec()
+        data.id = stack[head].id
+        data.name = stack[head].name
+        data.fee = stack[head].fee
+        head -= 1
+    return data
+
+
+# Display
+def display():
+    if head == Null_Pointer:
+        print("Stack is empty")
+    else:
+        for i in range(len(stack) - 1, Null_Pointer, -1):
+            if i == head:
+                print(stack[i].id, stack[i].name, stack[i].fee, "\t <-- head")
+            else:
+                print(stack[i].id, stack[i].name, stack[i].fee)
+
+
+# Main Program
+c = "n"
+while c != 5:
+    print("Choice 1: Initialise the stack")
+    print("Choice 2: Push an item")
+    print("Choice 3: Pop an item")
+    print("Choice 4: Display the stack")
+    print("Choice 5: Quit")
+    print("")
+    c = input("Enter a Choice: ")
+    print("")
+    if c == "1":
+        init()
+    elif c == "2":
+        push()
+    elif c == "3":
+        x = pop()
+        print(x.id, x.name, x.fee)
+    elif c == "4":
+        display()
+    elif c == "5":
+        break
+    else:
+        print("ERROR")
+    print("")
