@@ -1,9 +1,0 @@
-def push():
-    global head, stack
-    if head == len(stack) - 1:
-        print("Stack is full")
-    else:
-        head += 1
-        stack[head].id = input("Enter Student ID: ")
-        stack[head].name = input("Enter Student Name: ")
-        stack[head].fee = input("Enter Student Fees: ")
