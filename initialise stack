@@ -1,0 +1,5 @@
+def init():
+    global head, stack
+    for i in range(6):
+        stack[i] = None
+    head = null_pointer
