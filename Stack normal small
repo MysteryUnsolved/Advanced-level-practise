@@ -1,0 +1,46 @@
+Null_Pointer = -1
+stack = [None for i in range(5)]
+head = Null_Pointer
+c = "n"
+while c != 5:
+    print("""Choice 1: Initialise the stack
+Choice 2: Push an item
+Choice 3: Pop an item
+Choice 4: Display the stack
+Choice 5: Quit
+""")
+    c = input("Enter a Choice: ")
+    print("")
+    if c == "1":
+        for i in range(5):
+            stack[i] = None
+        head = -1
+        print("Initialised Successfully")
+    elif c == "2":
+        if head == len(stack) - 1:
+            print("Stack is full")
+        else:
+            head += 1
+            stack[head] = input("Enter Data: ")
+    elif c == "3":
+        if head == Null_Pointer:
+            print("Stack Underflow")
+            data = -1
+        else:
+            data = stack[head]
+            head -= 1
+        print("Popped Successfully: ", data)
+    elif c == "4":
+        if head == Null_Pointer:
+            print("Stack is empty")
+        else:
+            for i in range(len(stack) - 1, Null_Pointer, -1):
+                if i == head:
+                    print(stack[i], "\t <-- head")
+                else:
+                    print(stack[i])
+    elif c == "5":
+        break
+    else:
+        print("ERROR")
+    print("")
