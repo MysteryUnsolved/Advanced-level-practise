@@ -1,0 +1,61 @@
+class StuRec:
+    def __init__(self):
+        self.id = -1
+        self.name = ""
+        self.fee = -1
+
+
+Null_Pointer = -1
+stack = [StuRec() for i in range(5)]
+head = Null_Pointer
+c = "n"
+while c != 5:
+    print("""Choice 1: Initialise the stack
+Choice 2: Push an item
+Choice 3: Pop an item
+Choice 4: Display the stack
+Choice 5: Quit
+""")
+    c = input("Enter a Choice: ")
+    print("")
+    if c == "1":
+        for i in range(5):
+            stack[i].id = -1
+            stack[i].name = ""
+            stack[i].fee = -1
+        head = -1
+        print("Initialised Successfully")
+    elif c == "2":
+        if head == len(stack) - 1:
+            print("Stack is full")
+        else:
+            head += 1
+            stack[head].id = input("Enter Student ID: ")
+            stack[head].name = input("Enter Student Name: ")
+            stack[head].fee = input("Enter Student Fees: ")
+    elif c == "3":
+        data = StuRec()
+        if head == Null_Pointer:
+            print("Stack Underflow")
+            data.id = -1
+        else:
+            data = StuRec()
+            data.id = stack[head].id
+            data.name = stack[head].name
+            data.fee = stack[head].fee
+            head -= 1
+        print(data.id, data.name, data.fee)
+    elif c == "4":
+        if head == Null_Pointer:
+            print("Stack is empty")
+        else:
+            for i in range(len(stack) - 1, Null_Pointer, -1):
+                if i == head:
+                    print(stack[i].id, stack[i].name, stack[i].fee, "\t <-- head")
+                else:
+                    print(stack[i].id, stack[i].name, stack[i].fee)
+    elif c == "5":
+        break
+    else:
+        print("ERROR")
+    print("")
